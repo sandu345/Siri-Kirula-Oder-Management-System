@@ -11,3 +11,5 @@ const db = mysql.createConnection({
   password: "",
   database: "signup"
 });
+
+// app.post()
