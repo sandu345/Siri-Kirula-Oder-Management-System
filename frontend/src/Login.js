@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import validation from "./LoginValidation";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import './styles.css'; // Import the custom CSS
+import logo from './images/logo.jpg'
 
 function Login() {
   const [values, setValues] = useState({
@@ -11,6 +13,7 @@ function Login() {
   });
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
+  const [serverError, setServerError] = useState(""); // New state for server error
 
   const handleInput = (event) => {
     setValues((prev) => ({
@@ -23,6 +26,7 @@ function Login() {
     event.preventDefault();
     const validationErrors = validation(values);
     setErrors(validationErrors);
+    setServerError(""); // Reset server error
     if (!validationErrors.email && !validationErrors.password) {
       axios
         .post("http://localhost:3001/login", values)
@@ -30,7 +34,7 @@ function Login() {
           if (res.data === "Success") {
             navigate("/home");
           } else {
-            alert("No record exists.");
+            setServerError("No record exists."); // Set server error
           }
         })
         .catch((err) => console.log(err));
@@ -38,12 +42,13 @@ function Login() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
-      <div className="bg-white p-3 rounded w-25">
-        <h2>Sign In</h2>
+    <div className="full-height-center">
+      <div className="form-container">
+      <img src={logo} alt="Logo" className="logo"/>
+        <h2 className="signup-title">Sign In</h2>
         <form action="" onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="email">
+            <label htmlFor="email" className="input-field-names">
               <strong>Email</strong>
             </label>
             <input
@@ -51,14 +56,14 @@ function Login() {
               placeholder="Enter your Email"
               name="email"
               onChange={handleInput}
-              className="form-control rounded-0"
+              className="form-control"
             />
             {errors.email && (
               <span className="text-danger">{errors.email}</span>
             )}
           </div>
           <div className="mb-3">
-            <label htmlFor="password">
+            <label htmlFor="password" className="input-field-names">
               <strong>Password</strong>
             </label>
             <input
@@ -66,19 +71,24 @@ function Login() {
               name="password"
               placeholder="Enter your Password"
               onChange={handleInput}
-              className="form-control rounded-0"
+              className="form-control"
             />
             {errors.password && (
               <span className="text-danger">{errors.password}</span>
             )}
           </div>
-          <button type="submit" className="btn btn-success w-100 rounded-0">
+          {serverError && (
+            <div className="mb-3">
+              <span className="text-danger">{serverError}</span>
+            </div>
+          )}
+          <button type="submit" className="btn-success">
             Login
           </button>
-          <p>You agree to our terms and policies.</p>
+          <p className="input-field-names">You agree to our terms and policies.</p>
           <Link
             to={"/signup"}
-            className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none"
+            className="btn-default"
           >
             Create Account
           </Link>
