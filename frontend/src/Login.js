@@ -4,8 +4,6 @@ import validation from "./LoginValidation";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
-
 function Login() {
   const [values, setValues] = useState({
     email: "",
@@ -13,17 +11,19 @@ function Login() {
   });
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
+
   const handleInput = (event) => {
     setValues((prev) => ({
       ...prev,
-      [event.target.name]: [event.target.value],
+      [event.target.name]: event.target.value,
     }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setErrors(validation(values));
-    if (errors.email === "" && errors.password === "") {
+    const validationErrors = validation(values);
+    setErrors(validationErrors);
+    if (!validationErrors.email && !validationErrors.password) {
       axios
         .post("http://localhost:3001/login", values)
         .then((res) => {
@@ -36,6 +36,7 @@ function Login() {
         .catch((err) => console.log(err));
     }
   };
+
   return (
     <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
       <div className="bg-white p-3 rounded w-25">
