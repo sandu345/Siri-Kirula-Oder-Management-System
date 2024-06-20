@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import validation from "./SignupValidation";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import './styles.css'; 
+import logo from './images/logo.jpg'
 
 function Signup() {
   const [values, setValues] = useState({
@@ -40,71 +42,73 @@ function Signup() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
-      <div className="bg-white p-3 rounded w-25">
-        <h2>Sign Up</h2>
-        <form action="" onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="name">
-              <strong>Name</strong>
-            </label>
-            <input
-              type="text"
-              placeholder="Enter your Name"
-              name="name"
-              onChange={handleInput}
-              className="form-control rounded-0"
-            />
-            {errors.name && <span className="text-danger">{errors.name}</span>}
-          </div>
-          <div className="mb-3">
-            <label htmlFor="email">
-              <strong>Email</strong>
-            </label>
-            <input
-              type="email"
-              placeholder="Enter your Email"
-              name="email"
-              onChange={handleInput}
-              className="form-control rounded-0"
-            />
-            {errors.email && (
-              <span className="text-danger">{errors.email}</span>
-            )}
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password">
-              <strong>Password</strong>
-            </label>
-            <input
-              type="password"
-              placeholder="Enter your Password"
-              name="password"
-              onChange={handleInput}
-              className="form-control rounded-0"
-            />
-            {errors.password && (
-              <span className="text-danger">{errors.password}</span>
-            )}
-          </div>
-          {serverError && (
+    <div className="full-height-center">
+      
+        <div className="form-container">
+          <img src={logo} alt="Logo" className="logo"/>
+          <h2 className="signup-title">Sign Up</h2>
+          <form action="" onSubmit={handleSubmit}>
             <div className="mb-3">
-              <span className="text-danger">{serverError}</span>
+              <label htmlFor="name" className="input-field-names">
+                <strong>Name</strong>
+              </label>
+              <input
+                type="text"
+                placeholder="Enter your Name"
+                name="name"
+                onChange={handleInput}
+                className="form-control"
+              />
+              {errors.name && <span className="text-danger">{errors.name}</span>}
             </div>
-          )}
-          <button type="submit" className="btn btn-success w-100 rounded-0">
-            Signup
-          </button>
-          <p>You agree to our terms and policies.</p>
-          <Link
-            to={"/"}
-            className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none"
-          >
-            Login
-          </Link>
-        </form>
+            <div className="mb-3">
+              <label htmlFor="email" className="input-field-names">
+                <strong>Email</strong>
+              </label>
+              <input
+                type="email"
+                placeholder="Enter your Email"
+                name="email"
+                onChange={handleInput}
+                className="form-control"
+              />
+              {errors.email && (
+                <span className="text-danger">{errors.email}</span>
+              )}
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="input-field-names">
+                <strong>Password</strong>
+              </label>
+              <input
+                type="password"
+                placeholder="Enter your Password"
+                name="password"
+                onChange={handleInput}
+                className="form-control"
+              />
+              {errors.password && (
+                <span className="text-danger">{errors.password}</span>
+              )}
+            </div>
+            {serverError && (
+              <div className="mb-3">
+                <span className="text-danger">{serverError}</span>
+              </div>
+            )}
+            <button type="submit" className="btn-success">
+              Signup
+            </button>
+            <p className="input-field-names">You agree to our terms and policies.</p>
+            <Link
+              to={"/"}
+              className="btn-default"
+            >
+              Login
+            </Link>
+          </form>
+        </div>
       </div>
-    </div>
   );
 }
 
