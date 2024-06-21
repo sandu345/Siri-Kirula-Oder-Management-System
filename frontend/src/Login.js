@@ -31,20 +31,21 @@ function Login() {
       axios
         .post("http://localhost:3001/login", values)
         .then((res) => {
+          console.log('Response:', res.data); // Debugging log
           if (res.data === "Success") {
             navigate("/home");
           } else {
             setServerError("No record exists."); // Set server error
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log('Error:', err));
     }
   };
 
   return (
     <div className="full-height-center">
       <div className="form-container">
-      <img src={logo} alt="Logo" className="logo"/>
+        <img src={logo} alt="Logo" className="logo"/>
         <h2 className="signup-title">Sign In</h2>
         <form action="" onSubmit={handleSubmit}>
           <div className="mb-3">
