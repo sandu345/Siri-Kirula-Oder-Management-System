@@ -150,7 +150,9 @@ function Login() {
     <div className="full-height-center">
       <div className="form-container">
         <img src={logo} alt="Logo" className="logo" onClick={() => navigate('/home')} />
+        <form class="signup-form">
         <h2 className="signup-title">Sign In</h2>
+        </form>
         <form action="" onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="email" className="input-field-names">

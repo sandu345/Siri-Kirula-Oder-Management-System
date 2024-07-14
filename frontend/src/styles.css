@@ -26,9 +26,28 @@
 }
 
 .signup-title {
+  color: #551820; 
+  margin-bottom: 1.5rem; 
+  padding: 2rem;
+  text-align: center;
+
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-title {
+  order: -1; /* Ensure it is always at the top */
   color: #551820; /* Change color to match theme */
   margin-bottom: 1.5rem; /* Space below the title */
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
 }
+
 
 .input-field-names {
   color: #551820; /* Change color to match theme */
@@ -61,7 +80,21 @@
 
 .btn-success:hover {
   background-color: #875a5a; /* Darken on hover */
+
 }
+.btn-success {
+  border-radius: 10px; /* Curved edges */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.btn-success:hover {
+  background-color: #875a5a; /* Darken on hover */
+}
+
+.btn-success:active {
+  background-color: #A07474; /* Change to red when pressed */
+}
+
 
 .btn-default {
   background-color: #A07474; /* Equivalent to Bootstrap's bg-light */
