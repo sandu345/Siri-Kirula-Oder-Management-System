@@ -1,0 +1,36 @@
+.vertical-nav {
+    width: 200px;
+    background-color: #551820; /* Equivalent to Bootstrap's bg-primary */
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .nav-logo {
+    width: 50px; /* Adjust the size to be small */
+    height: auto;
+    margin-bottom: 2rem;
+  }
+  
+  .vertical-nav nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .vertical-nav nav ul li {
+    margin: 1rem 0;
+  }
+  
+  .vertical-nav nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .vertical-nav nav ul li a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,19 +1,43 @@
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+// import './verticalNavStyling.css'; // Import the custom CSS
+// import logo from './images/logo.jpg';
+
+// function VerticalNav({ links }) {
+//   return (
+//     <div className="vertical-nav">
+//       <img src={logo} alt="Logo" className="nav-logo" />
+//       <nav>
+//         <ul>
+//           {links.map(link => (
+//             <li key={link.name}>
+//               <Link to={link.path}>{link.name}</Link>
+//             </li>
+//           ))}
+//         </ul>
+//       </nav>
+//     </div>
+//   );
+// }
+
+// export default VerticalNav;
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import './verticalNavStyling.css'; // Import the custom CSS
 import logo from './images/logo.jpg';
-import './verticalNavStyling.css';
 
 function VerticalNav({ links }) {
-  const navigate = useNavigate();
   return (
     <div className="vertical-nav">
-      <img src={logo} alt="Logo" className="nav-logo" onClick={() => navigate("/home")} />
-      <nav className="nav-links">
-        {links.map((link, index) => (
-          <NavLink key={index} to={link.path} className="nav-link">
-            {link.name}
-          </NavLink>
-        ))}
+      <img src={logo} alt="Logo" className="nav-logo" />
+      <nav>
+        <ul>
+          {links.map(link => (
+            <li key={link.name}>
+              <Link to={link.path}>{link.name}</Link>
+            </li>
+          ))}
+        </ul>
       </nav>
     </div>
   );

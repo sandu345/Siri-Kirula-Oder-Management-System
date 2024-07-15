@@ -1,0 +1,51 @@
+.orders-page {
+    display: flex;
+    height: 100vh;
+    background-color: #551820; /* Dark red background color */
+  }
+  
+  .orders-content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto; /* Allow vertical scrolling */
+    background-color: #ac535f; /* Light background color for content */
+  }
+  
+  .orders-title {
+    color: #551820;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+  }
+  
+  .orders-table th, .orders-table td {
+    border: 1px solid #551820;
+    padding: 0.75rem;
+    text-align: left;
+    color: #551820;
+  }
+  
+  .orders-table th {
+    background-color: #A07474; /* Table header background color */
+    color: white;
+  }
+  
+  .upload-panel {
+    margin-bottom: 1rem;
+  }
+  
+  .uploaded-image {
+    margin-top: 1rem;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  input[type="file"] {
+    margin-top: 0.5rem;
+  }
+  
